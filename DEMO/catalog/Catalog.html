@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal</title>
+    <link rel="stylesheet" href="CatalogCss.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <!-- 使用 div 包含標題和選單，並列 -->
+            <div class="header-title-menu">
+                <h1>
+                    <a href = "../HTML.html" style="text-decoration: none; color: inherit;">Portal</a>
+                </h1>
+                <ul class="drop-down-menu">
+
+                    <li><a href="..\關於\announcement.html">關於</a>
+                        <ul>
+                            <li><a href="..\關於\announcement.html">本館公告</a></li>
+                            <li><a href="#">開館時間</a></li>
+                            <li><a href="#">借還書規則</a></li>
+                            <li><a href="#">活動行事曆</a></li>
+                            <li><a href="#">聯繫我們</a></li>                        
+                        </ul>
+                    </li>
+
+                    <li><a href="..\catalog/Catalog.html">研究資源</a>
+                        <ul>
+                            <li><a href="..\catalog/Catalog.html">館藏資源</a>
+                                <ul>
+                                    <li><a href="..\catalog/Catalog.html">館藏查詢</a></li>
+                                    <li><a href="#">每月新書</a></li>
+                                    <li><a href="#">預約書排行</a></li>
+                                    <li><a href="#">多媒體資源</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="../E-Resources\E-Resources.html">電子資源</a>
+                                <ul>
+                                    <li><a href="#">電子資源查詢</a></li>
+                                    <li><a href="#">電子資料庫</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="../E-Resources\E-Resources.html">神學相關網路資源</a></li>
+                            <li><a href="../Download/download.html">下載專區</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">OPAC</a></li>
+            
+                    <!-- 新增語言選項 -->
+                <li>
+                    <a href="#">語言</a>
+                    <ul class="language-menu">
+                        <li><a href="#">繁體中文</a></li>
+                        <li><a href="#">簡體中文</a></li>
+                        <li><a href="#">English</a></li>
+                    </ul>
+                </li>
+            </ul>
+                <form class="search-form" action="#" method="get">
+                    <input type="text" placeholder="搜尋..." name="search" required>
+                    <button type="submit">搜索</button>
+                </form>
+            </div>
+        </nav>
+
+        <div class="about-menu">
+            <nav>
+                <div class="about">館藏資源</div>
+                <ul class="about-nav">
+                    <li class="menu-item"><a href="#" onclick="showContent('Search')">館藏查詢</a></li>
+                    <li class="menu-item"><a href="#" onclick="showContent('NewBook')">每月新書</a></li>
+                    <li class="menu-item"><a href="#" onclick="showContent('Booking')">預約書排行</a></li>
+                    <li class="menu-item"><a href="#" onclick="showContent('Media')">多媒體資源</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="Collection">
+            <div id="Search" class="Collection-section ">
+                <form class="Collection-form">
+                    <!-- 第一行條件 -->
+                    <div class="search-row">
+                        <select>
+                            <option>書名</option>
+                            <option>作者</option>
+                            <option>ISBN</option>
+                        </select>
+                        <select>
+                            <option>and</option>
+                            <option>or</option>
+                            <option>not</option>
+                        </select>
+                        <input type="text" placeholder="請輸入條件">
+                    </div>
+                    
+                    <!-- 第二行條件 -->
+                    <div class="search-row">
+                        <select>
+                            <option>作者</option>
+                            <option>書名</option>
+                            <option>ISBN</option>
+                        </select>
+                        <select>
+                            <option>and</option>
+                            <option>or</option>
+                            <option>not</option>
+                        </select>
+                        <input type="text" placeholder="請輸入條件">
+                    </div>
+                    
+                    <!-- 第三行條件 -->
+                    <div class="search-row">
+                        <select>
+                            <option>ISBN</option>
+                            <option>書名</option>
+                            <option>作者</option>
+                        </select>
+                        <select>
+                            <option>and</option>
+                            <option>or</option>
+                            <option>not</option>
+                        </select>
+                        <input type="text" placeholder="請輸入條件">
+                    </div>
+                    
+                    <!-- 按鈕區 -->
+                    <div class="button-group">
+                        <button type="button" onclick="search()">查詢</button>
+                        <button type="button" onclick="clearFields()">清除</button>
+                    </div>
+                </form>
+        
+                <a href="#" class="reset-link">原始條件</a>
+            </div>
+            
+            <div id="NewBook" class="Collection-section" style="display: none;">
+               
+                                    <!-- 左側篩選年份 -->
+                <aside class="sidebar">
+                    <h2>新進年份</h2>
+                    <ul class="year-list">
+                        <li><a href="#" onclick="filterByYear(2024)">2024</a></li>
+                        <li><a href="#" onclick="filterByYear(2023)">2023</a></li>
+                        <li><a href="#" onclick="filterByYear(2022)">2022</a></li>
+                        <li><a href="#" onclick="filterByYear(2021)">2021</a></li>
+                        <li><a href="#" onclick="filterByYear(2020)">2020</a></li>
+                        <li><a href="#" onclick="filterByYear(2019)">2019</a></li>
+                        <li><a href="#" onclick="filterByYear(2018)">2018</a></li>
+                        <li><a href="#" onclick="filterByYear(2017)">2017</a></li>
+                        <li><a href="#" onclick="filterByYear(2016)">2016</a></li>
+                        <li><a href="#" onclick="filterByYear(2015)">2015</a></li>
+                        <li><a href="#" onclick="filterByYear(2014)">2014</a></li>
+                        <li><a href="#" onclick="filterByYear(2013)">2013</a></li>
+                        <li><a href="#" onclick="filterByYear(2012)">2012</a></li>
+                        <li><a href="#" onclick="filterByYear(2011)">2011</a></li>
+                        <li><a href="#" onclick="filterByYear(2010)">2010</a></li>
+                        <li><a href="#" onclick="filterByYear(2009)">2009</a></li>
+                        <li><a href="#" onclick="filterByYear(2008)">2008</a></li>
+                        <li><a href="#" onclick="filterByYear(2007)">2007</a></li>
+                        <li><a href="#" onclick="filterByYear(2006)">2006</a></li>
+                        <li><a href="#" onclick="filterByYear(2005)">2005</a></li>
+                        <li><a href="#" onclick="filterByYear(2004)">2004</a></li>
+                        <li><a href="#" onclick="filterByYear(2003)">2003</a></li>
+                        <li><a href="#" onclick="filterByYear(2002)">2002</a></li>
+                        <li><a href="#" onclick="filterByYear(2001)">2001</a></li>
+                        <li><a href="#" onclick="filterByYear(2000)">2000</a></li>
+                        <li><a href="#" onclick="filterByYear(1999)">1999</a></li>
+                                    <!-- 更多年份... -->
+                    </ul>
+                </aside> 
+                
+                         <!-- 出版物表格 -->
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>編號</th>
+                                    <th>書封</th>
+                                    <th>題名</th>
+                                    <th>館藏地</th>
+                                    <th>索書號</th>
+                                </tr>
+                            </thead>
+                            <tbody id="book-list">
+                                <tr data-year="2024">
+                                    <td>1</td>
+                                    <td class="image-cell"><img src="image1.jpg" alt="書封1"></td>
+                                    <td>美國</td>
+                                    <td>總館5樓書庫</td>
+                                    <td>013.26 8445</td>
+                                </tr>
+                                <tr data-year="2023">
+                                    <td>2</td>
+                                    <td class="image-cell"><img src="image2.jpg" alt="書封2"></td>
+                                    <td>台灣</td>
+                                    <td>總館5樓書庫</td>
+                                    <td>072.5 544 842</td>
+                                </tr>
+                                <tr data-year="2022">
+                                    <td>3</td>
+                                    <td class="image-cell"><img src="image3.jpg" alt="書封3"></td>
+                                    <td>韓國</td>
+                                    <td>總館5樓書庫</td>
+                                    <td>003.45 123 456</td>
+                                </tr>
+                                     <!-- 更多書籍項目... -->
+                            </tbody>
+                        </table>
+
+                        <!-- 分頁按鈕 -->
+                        <div class="pagination">
+                                <button class="active" onclick="showPage(1)">1</button>
+                                <button onclick="showPage(2)">2</button>
+                                <button onclick="showPage(3)">3</button>
+                                     <!-- 更多頁數按鈕... -->
+                        </div>
+                <!--長條書目(做更改)-->
+                <!-- <div class="gallery-item" data-year="2017">
+                    <img src="image1.jpg" alt="BOOK1">
+                    <p>2017<br>BOOK1<br>NT$500</p>
+                </div>
+                <div class="gallery-item" data-year="2015">
+                    <img src="image2.jpg" alt="BooK2">
+                    <p>2015 <br>BooK2<br>NT$480</p>
+                </div>
+                <div class="gallery-item" data-year="2018">
+                    <img src="image3.jpg" alt="BooK3">
+                    <p>2018<br>BooK3<br>NT$1600</p>
+                </div> -->
+                <!-- 更多出版物項目... -->
+            </div>
+
+            <div id="Booking" class="Collection-section" style="display: none;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Requests</th>
+                            <th>Title</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>24</td>
+                            <td>蔡康永的情商課. 3, 你願意, 人生就會值得 / 蔡康永著</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>17</td>
+                            <td>全知讀者視角 = Omniscient reader's viewpoint / sing N song(싱송)著 ; 林季妏譯</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>14</td>
+                            <td>長期買進: 財金教授周冠男的42堂自制力投資課 / 周冠男著</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>13</td>
+                            <td>蔡康永的情商課: 為你自己活一次 / 蔡康永著</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>12</td>
+                            <td>蔡康永的情商課. 2, 因為這是你的人生 / 蔡康永著</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>10</td>
+                            <td>當代交通政策 = Contemporary transportation policy / 張有恆著</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>9</td>
+                            <td>素食者 / 韓江著 ; 千日譯</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>7</td>
+                            <td>財務管理. 第九版 / Richard A. Brealey, Stewart C. Myers, Alan J. Marcus著 ; 楊雪蘭編譯</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>5</td>
+                            <td>投資學: 理論與實務. 第十二版 / Zvi Bodie, Alex Kane, Alan J. Marcus著 ; 林哲聰著</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+            <div id="Media" class="Collection-section" style="display: none;">
+                        <!-- 多媒體資源內容 -->
+        <h2>多媒體資源</h2>
+        <div class="video-grid">
+            <div class="video-item">
+                <video controls>
+                    <source src="video1.mp4" type="video/mp4">
+                    您的瀏覽器不支援 HTML 影片。
+                </video>
+                <p>影片標題 1</p>
+            </div>
+            <div class="video-item">
+                <video controls>
+                    <source src="video2.mp4" type="video/mp4">
+                    您的瀏覽器不支援 HTML 影片。
+                </video>
+                <p>影片標題 2</p>
+            </div>
+            <div class="video-item">
+                <video controls>
+                    <source src="video3.mp4" type="video/mp4">
+                    您的瀏覽器不支援 HTML 影片。
+                </video>
+                <p>影片標題 3</p>
+            </div>
+            <div class="video-item">
+                <video controls>
+                    <source src="video4.mp4" type="video/mp4">
+                    您的瀏覽器不支援 HTML 影片。
+                </video>
+                <p>影片標題 4</p>
+            </div>
+            <div class="video-item">
+                <video controls>
+                    <source src="video5.mp4" type="video/mp4">
+                    您的瀏覽器不支援 HTML 影片。
+                </video>
+                <p>影片標題 5</p>
+            </div>
+            <div class="video-item">
+                <video controls>
+                    <source src="video6.mp4" type="video/mp4">
+                    您的瀏覽器不支援 HTML 影片。
+                </video>
+                <p>影片標題 6</p>
+            </div>
+            </div>      
+        </div>
+        
+    </header>
+
+<footer class="footer-container">
+    <p class="footer-text"> 版權所有 ©2024 , All Rights Reserved.</p>
+</footer>
+
+    
+       
+    <!-- 引入外部的 JavaScript 檔案 -->
+    <script src="Catalog.js"></script>
+</body>
+</html>

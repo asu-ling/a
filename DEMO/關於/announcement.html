@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal</title>
+    <link rel="stylesheet" href="AnnouncementCss.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <!-- 使用 div 包含標題和選單，並列 -->
+            <div class="header-title-menu">
+                <h1>
+                    <a href = "../HTML.html" style="text-decoration: none; color: inherit;">Portal</a>
+                </h1>
+                <ul class="drop-down-menu">
+
+                    <li><a href="#">關於</a>
+                        <ul>
+                            <li><a href="#">本館公告</a></li>
+                            <li><a href="#">開館時間</a></li>
+                            <li><a href="#">借還書規則</a></li>
+                            <li><a href="#">活動行事曆</a></li>
+                            <li><a href="#">聯繫我們</a></li>                        
+                        </ul>
+                    </li>
+
+                    <li><a href="../catalog/Catalog.html">研究資源</a>
+                        <ul>
+                            <li><a href="../catalog/Catalog.html">館藏資源</a>
+                                <ul>
+                                    <li><a href="../catalog/Catalog.html">館藏查詢</a></li>
+                                    <li><a href="#">每月新書</a></li>
+                                    <li><a href="#">預約書排行</a></li>
+                                    <li><a href="#">多媒體資源</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="../E-Resources/E-Resources.html">電子資源</a>
+                                <ul>
+                                    <li><a href="../E-Resources/E-Resources.html">電子資源查詢</a></li>
+                                    <li><a href="#">電子資料庫</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="../InternetResources/InternetResources.html">神學相關網路資源</a></li>
+                            <li><a href="../Download/download.html">下載專區</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">OPAC</a></li>
+            
+                    <!-- 新增語言選項 -->
+                <li>
+                    <a href="#">語言</a>
+                    <ul class="language-menu">
+                        <li><a href="#">繁體中文</a></li>
+                        <li><a href="#">簡體中文</a></li>
+                        <li><a href="#">English</a></li>
+                    </ul>
+                </li>
+            </ul>
+                <form class="search-form" action="#" method="get">
+                    <input type="text" placeholder="搜尋..." name="search" required>
+                    <button type="submit">搜索</button>
+                </form>
+            </div>
+        </nav>
+
+        <div class="about-menu">
+            <nav>
+                <div class="about">關於 </div>
+                <ul class="about-nav">
+                    <li class="menu-item"><a href="#" onclick="showContent('announcement')">本館公告</a></li>
+                    <li class="menu-item"><a href="#" onclick="showContent('opentime')">開館時間</a></li>
+                    <li class="menu-item"><a href="#" onclick="showContent('rules')">借還書規則</a></li>
+                    <li class="menu-item"><a href="#" onclick="showContent('events')">活動/行事曆</a></li>
+                    <li class="menu-item"><a href="#" onclick="showContent('contact')">聯繫我們</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="content-container">
+            <div id="announcement" class="content-section">這裡是本館公告的內容。</div>
+            <div id="opentime" class="content-section" style="display: none;">這裡是開館時間的內容。</div>
+            <div id="rules" class="content-section" style="display: none;">這裡是借還書規則的內容。</div>
+            <div id="events" class="content-section" style="display: none;">這裡是活動/行事曆的內容。</div>
+            <div id="contact" class="content-section" style="display: none;">
+                <form>
+                    <!-- 標題 -->
+                    <div class="form-group">
+                        <label for="title">標題</label>
+                        <input type="text" id="title" name="title" required>
+                    </div>
+            
+                    <!-- 姓名 -->
+                    <div class="form-group">
+                        <label for="name">姓名</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+            
+                    <!-- 電子信箱 -->
+                    <div class="form-group">
+                        <label for="email">電子信箱</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+            
+                    <!-- 聯絡電話 -->
+                    <div class="form-group">
+                        <label for="phone">聯絡電話</label>
+                        <input type="text" id="phone" name="phone" required>
+                    </div>
+            
+                    <!-- 訂閱電子報 -->
+                    <!-- <div class="form-group">
+                        <label>訂閱電子報</label>
+                        <div class="radio-group">
+                            <input type="radio" id="subscribe-yes" name="subscribe" value="yes" checked>
+                            <label for="subscribe-yes">是</label>
+                            <input type="radio" id="subscribe-no" name="subscribe" value="no">
+                            <label for="subscribe-no">否</label>
+                        </div>
+                    </div> -->
+            
+                    <!-- 問題分類 -->
+                    <!-- <div class="form-group">
+                        <label>問題分類</label>
+                        <div class="radio-group">
+                            <input type="radio" id="category-general" name="category" value="general">
+                            <label for="category-general">一般諮詢</label>
+                            <input type="radio" id="category-artist" name="category" value="artist">
+                            <label for="category-artist">藝術家</label>
+                            <input type="radio" id="category-publication" name="category" value="publication">
+                            <label for="category-publication">出版品</label>
+                            <input type="radio" id="category-event" name="category" value="event" checked>
+                            <label for="category-event">活動相關</label>
+                        </div>
+                    </div> -->
+            
+                    <!-- 留言 -->
+                    <div class="form-group">
+                        <label for="message">留言</label>
+                        <textarea id="message" name="message" rows="4" required></textarea>
+                    </div>
+            
+                    <!-- 驗證碼 -->
+                    <div class="form-group">
+                        <label for="captcha">驗證碼</label>
+                        <div class="captcha-wrapper">
+                            <input type="text" id="captcha-input" class="captcha-input" placeholder="請輸入驗證碼">
+                            <div class="captcha" id="captcha-text">wGy9G</div>       
+                            <a href="#" onclick="generateCaptcha(); return false;">重新產生</a>                   
+                        </div>
+                    </div>
+                
+                    <div class="submit-button">
+                        <button onclick="validateCaptcha()">送出</button>
+                    </div>
+                
+                    <div class="error-message" id="error-message"></div>
+                </div>
+            </div>
+                
+        </div>
+        
+    </header>
+
+<footer class="footer-container">
+    <p class="footer-text"> 版權所有 ©2024 , All Rights Reserved.</p>
+</footer>
+
+    
+       
+    <!-- 引入外部的 JavaScript 檔案 -->
+    <script src="AboutJS.js"></script>
+</body>
+</html>

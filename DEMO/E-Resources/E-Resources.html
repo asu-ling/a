@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal</title>
+    <link rel="stylesheet" href="E-Resources.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <!-- 使用 div 包含標題和選單，並列 -->
+            <div class="header-title-menu">
+                <h1>
+                    <a href = "../HTML.html" style="text-decoration: none; color: inherit;">Portal</a>
+                </h1>
+                <ul class="drop-down-menu">
+
+                    <li><a href="../關於/announcement.html">關於</a>
+                        <ul>
+                            <li><a href="../關於/announcement.html">本館公告</a></li>
+                            <li><a href="#">開館時間</a></li>
+                            <li><a href="#">借還書規則</a></li>
+                            <li><a href="#">活動行事曆</a></li>
+                            <li><a href="#">聯繫我們</a></li>                        
+                        </ul>
+                    </li>
+
+                    <li><a href="../catalog/Catalog.html">研究資源</a>
+                        <ul>
+                            <li><a href="../catalog/Catalog.html">館藏資源</a>
+                                <ul>
+                                    <li><a href="../catalog/Catalog.html">館藏查詢</a></li>
+                                    <li><a href="#">每月新書</a></li>
+                                    <li><a href="#">預約書排行</a></li>
+                                    <li><a href="#">多媒體資源</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="../E-Resources/E-Resources.html">電子資源</a>
+                                <ul>
+                                    <li><a href="../E-Resources/E-Resources.html">電子資源查詢</a></li>
+                                    <li><a href="#">電子書館藏</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="../InternetResources\InternetResources.html">神學相關網路資源</a></li>
+                            <li><a href="../Download\download.html">下載專區</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">OPAC</a></li>
+            
+                    <!-- 新增語言選項 -->
+                <li>
+                    <a href="#">語言</a>
+                    <ul class="language-menu">
+                        <li><a href="#">繁體中文</a></li>
+                        <li><a href="#">簡體中文</a></li>
+                        <li><a href="#">English</a></li>
+                    </ul>
+                </li>
+            </ul>
+                <form class="search-form" action="#" method="get">
+                    <input type="text" placeholder="搜尋..." name="search" required>
+                    <button type="submit">搜索</button>
+                </form>
+            </div>
+        </nav>
+
+        <div class="about-menu">
+            <nav>
+                <div class="about">電子資源</div>
+                <ul class="about-nav">
+                    <li class="menu-item"><a href="#" onclick="showContent('Eresource-search')">電子資源查詢</a></li>
+                    <li class="menu-item"><a href="#" onclick="showContent('Ecollection-search')">電子書館藏</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- 電子資源查詢 -->
+        <div id="Eresource-search" class="Esearch-form active">
+            <div>
+                <label for="Eresource-name">資源名稱</label>
+
+                <select id="Eresource-name">
+                    <option>全部資源</option>
+                    <option>資源名稱</option>
+                    <option>出版社/平台</option>
+                    <option>ISSN/ISBN</option>
+                </select>
+
+                <input type="text" placeholder="請輸入關鍵詞">
+                <button onclick="performSearch()">查詢</button>
+
+            </div>
+
+            <div class="Etype-options">
+                <label>資料類型：</label>
+                <label><input type="radio" name="type" value="database"> 資料庫</label>
+                <label><input type="radio" name="type" value="journal"> 電子期刊</label>
+            </div>
+
+            <!-- <div class="Eadvanced-search">
+                <a href="#">進階查詢</a>
+            </div> -->
+        </div>
+
+        <!-- 電子書館藏 -->
+        <div id="Ecollection-search" class="Esearch-form" style="display: none;">
+            <div>
+                <label for="collection-name">館藏名稱</label>
+                <select id="collection-name">
+                    <option>全部館藏</option>
+                    <option>電子書</option>
+                </select>   
+                <input type="text" placeholder="請輸入關鍵詞">
+                <button onclick="performSearch()">查詢</button>
+
+                <div class="event-list">
+
+                    <h3>細分您的搜尋結果</h3>
+                    <div class="filter-section">
+                        <div class="filter-category" onclick="toggleSection('topic-section')">
+                            <span>主題</span>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <ul class="filter-items" id="topic-section">
+                            <li><a href="#">藝術與人文(2)</a></li>
+                            <li><a href="#">社會科學</a></li>
+                            <li><a href="#">教育</a></li>
+                            <li><a href="#">綜合</a></li>
+                            <li><a href="#">數學</a></li>
+                            <li><a href="#">台灣研究</a></li>
+                            <li><a href="#">電腦科學</a></li>
+                            <li><a href="#">韓文</a></li>
+                            <li><a href="#">日文</a></li>
+                            <li><a href="#">西班牙文</a></li>
+                            <li><a href="#">英文</a></li>
+
+                        </ul>
+                    </div>
+                
+                    <div class="filter-section">
+                        <div class="filter-category" onclick="toggleSection('publisher-section')">
+                            <span>出版社/平台</span>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <ul class="filter-items" id="publisher-section">
+                            <li><a href="#">DOAJ Directory of Open Access Journals: Full Text(2)</a></li>
+                            <li><a href="#">Education Database: Full Text(2)</a></li>
+                            <li><a href="#">Hyread台灣全文資料庫: Full Text(2)</a></li>
+                            <li><a href="#">Publicly Available Content Database: Full Text(1)</a></li>
+                            <li><a href="#">高等教育知識庫: Full Text(2)</a></li>
+                        </ul>
+                    </div>
+                
+                    <div class="more">
+                        <a href="#">More</a>
+                    </div>
+
+                    <div class="event-item">
+                        <h3>
+                            <a href="your-link-here.html" target="_blank"> <!-- 將 "your-link-here.html" 替換為你的目標連結 -->
+                                <img src="your-image-here.jpg" alt="圖片" style="width: 50px; height: auto; margin-right: 10px; vertical-align: middle;">
+                                1111111111111111111111111111
+                            </a>
+                        </h3>
+                        <p><strong>摘要內容：</strong>****************</p>
+                        <p><strong>使用範圍：</strong>IP</p>
+                        <p><strong>備註：</strong>報名需填寫個人資料，僅供學員活動使用。</p>
+                        <!-- <button class="register-btn" onclick="register()">報名</button> -->
+                    </div>
+                    
+            
+                    <div class="event-item">
+                        <h3>
+                            <a href="your-link-here.html" target="_blank"> <!-- 將 "your-link-here.html" 替換為你的目標連結 -->
+                                <img src="your-image-here.jpg" alt="圖片" style="width: 50px; height: auto; margin-right: 10px; vertical-align: middle;">
+                                222222222222222222
+                            </a>
+                        </h3>
+                        <p><strong>摘要內容：</strong>****************</p>
+                        <p><strong>使用範圍：</strong>IP</p>
+                        <p><strong>備註：</strong>報名需填寫個人資料，僅供學員活動使用。</p>
+                        <!-- <button class="register-btn" onclick="register()">報名</button> -->
+                    </div>
+            
+                    <div class="event-item">
+                        <h3>
+                            <a href="your-link-here.html" target="_blank"> <!-- 將 "your-link-here.html" 替換為你的目標連結 -->
+                                <img src="your-image-here.jpg" alt="圖片" style="width: 50px; height: auto; margin-right: 10px; vertical-align: middle;">
+                                3333333333
+                            </a>
+                        </h3>
+                        <p><strong>摘要內容：</strong>****************</p>
+                        <p><strong>使用範圍：</strong>IP</p>
+                        <p><strong>備註：</strong>報名需填寫個人資料，僅供學員活動使用。</p>
+                        <!-- <button class="register-btn" onclick="register()">報名</button> -->
+                    </div>
+        
+                    <div class="event-item">
+                        <h3>
+                            <a href="your-link-here.html" target="_blank"> <!-- 將 "your-link-here.html" 替換為你的目標連結 -->
+                                <img src="your-image-here.jpg" alt="圖片" style="width: 50px; height: auto; margin-right: 10px; vertical-align: middle;">
+                                44444444444
+                            </a>
+                        </h3>
+                        <p><strong>摘要內容：</strong>****************</p>
+                        <p><strong>使用範圍：</strong>IP</p>
+                        <p><strong>備註：</strong>報名需填寫個人資料，僅供學員活動使用。</p>
+                        <!-- <button class="register-btn" onclick="register()">報名</button> -->
+                    </div>
+        
+                    <div class="event-item">
+                        <h3>
+                            <a href="your-link-here.html" target="_blank"> <!-- 將 "your-link-here.html" 替換為你的目標連結 -->
+                                <img src="your-image-here.jpg" alt="圖片" style="width: 50px; height: auto; margin-right: 10px; vertical-align: middle;">
+                                5555555555555555
+                            </a>
+                        </h3>
+                        <p><strong>摘要內容：</strong>****************</p>
+                        <p><strong>使用範圍：</strong>IP</p>
+                        <p><strong>備註：</strong>報名需填寫個人資料，僅供學員活動使用。</p>
+                        <!-- <button class="register-btn" onclick="register()">報名</button> -->
+                    </div>
+        
+                    <div class="event-item">
+                        <h3>
+                            <a href="your-link-here.html" target="_blank"> <!-- 將 "your-link-here.html" 替換為你的目標連結 -->
+                                <img src="your-image-here.jpg" alt="圖片" style="width: 50px; height: auto; margin-right: 10px; vertical-align: middle;">
+                                6666666666666666
+                            </a>
+                        </h3>
+                        <p><strong>摘要內容：</strong>****************</p>
+                        <p><strong>使用範圍：</strong>IP</p>
+                        <p><strong>備註：</strong>報名需填寫個人資料，僅供學員活動使用。</p>
+                        <!-- <button class="register-btn" onclick="register()">報名</button> -->
+                    </div>
+
+                    <div class="event-item">
+                        <h3>
+                            <a href="your-link-here.html" target="_blank"> <!-- 將 "your-link-here.html" 替換為你的目標連結 -->
+                                <img src="your-image-here.jpg" alt="圖片" style="width: 50px; height: auto; margin-right: 10px; vertical-align: middle;">
+                                77777777777777
+                            </a>
+                        </h3>
+                        <p><strong>摘要內容：</strong>****************</p>
+                        <p><strong>使用範圍：</strong>IP</p>
+                        <p><strong>備註：</strong>報名需填寫個人資料，僅供學員活動使用。</p>
+                        <!-- <button class="register-btn" onclick="register()">報名</button> -->
+                    </div>
+
+                    <div class="event-item">
+                        <h3>
+                            <a href="your-link-here.html" target="_blank"> <!-- 將 "your-link-here.html" 替換為你的目標連結 -->
+                                <img src="your-image-here.jpg" alt="圖片" style="width: 50px; height: auto; margin-right: 10px; vertical-align: middle;">
+                                888888888888
+                            </a>
+                        </h3>
+                        <p><strong>摘要內容：</strong>****************</p>
+                        <p><strong>使用範圍：</strong>IP</p>
+                        <p><strong>備註：</strong>報名需填寫個人資料，僅供學員活動使用。</p>
+                        <!-- <button class="register-btn" onclick="register()">報名</button> -->
+                    </div>
+
+                    <div class="event-item">
+                        <h3>
+                            <a href="your-link-here.html" target="_blank"> <!-- 將 "your-link-here.html" 替換為你的目標連結 -->
+                                <img src="your-image-here.jpg" alt="圖片" style="width: 50px; height: auto; margin-right: 10px; vertical-align: middle;">
+                                9999999999999
+                            </a>
+                        </h3>
+                        <p><strong>摘要內容：</strong>****************</p>
+                        <p><strong>使用範圍：</strong>IP</p>
+                        <p><strong>備註：</strong>報名需填寫個人資料，僅供學員活動使用。</p>
+                        <!-- <button class="register-btn" onclick="register()">報名</button> -->
+                    </div>
+
+                    <div class="event-item">
+                        <h3>
+                            <a href="your-link-here.html" target="_blank"> <!-- 將 "your-link-here.html" 替換為你的目標連結 -->
+                                <img src="your-image-here.jpg" alt="圖片" style="width: 50px; height: auto; margin-right: 10px; vertical-align: middle;">
+                                101010
+                            </a>
+                        </h3>
+                        <p><strong>摘要內容：</strong>****************</p>
+                        <p><strong>使用範圍：</strong>IP</p>
+                        <p><strong>備註：</strong>報名需填寫個人資料，僅供學員活動使用。</p>
+                        <!-- <button class="register-btn" onclick="register()">報名</button> -->
+                    </div>
+
+                    <div class="event-item">
+                        <h3>
+                            <a href="your-link-here.html" target="_blank"> <!-- 將 "your-link-here.html" 替換為你的目標連結 -->
+                                <img src="your-image-here.jpg" alt="圖片" style="width: 50px; height: auto; margin-right: 10px; vertical-align: middle;">
+                                11
+                            </a>
+                        </h3>
+                        <p><strong>摘要內容：</strong>****************</p>
+                        <p><strong>使用範圍：</strong>IP</p>
+                        <p><strong>備註：</strong>報名需填寫個人資料，僅供學員活動使用。</p>
+                        <!-- <button class="register-btn" onclick="register()">報名</button> -->
+                    </div>
+
+                    <div class="event-item">
+                        <h3>
+                            <a href="your-link-here.html" target="_blank"> <!-- 將 "your-link-here.html" 替換為你的目標連結 -->
+                                <img src="your-image-here.jpg" alt="圖片" style="width: 50px; height: auto; margin-right: 10px; vertical-align: middle;">
+                                12
+                            </a>
+                        </h3>
+                        <p><strong>摘要內容：</strong>****************</p>
+                        <p><strong>使用範圍：</strong>IP</p>
+                        <p><strong>備註：</strong>報名需填寫個人資料，僅供學員活動使用。</p>
+                        <!-- <button class="register-btn" onclick="register()">報名</button> -->
+                    </div>
+
+                    <div class="event-item">
+                        <h3>
+                            <a href="your-link-here.html" target="_blank"> <!-- 將 "your-link-here.html" 替換為你的目標連結 -->
+                                <img src="your-image-here.jpg" alt="圖片" style="width: 50px; height: auto; margin-right: 10px; vertical-align: middle;">
+                                13
+                            </a>
+                        </h3>
+                        <p><strong>摘要內容：</strong>****************</p>
+                        <p><strong>使用範圍：</strong>IP</p>
+                        <p><strong>備註：</strong>報名需填寫個人資料，僅供學員活動使用。</p>
+                        <!-- <button class="register-btn" onclick="register()">報名</button> -->
+                    </div>
+
+                    <div class="event-item">
+                        <h3>
+                            <a href="your-link-here.html" target="_blank"> <!-- 將 "your-link-here.html" 替換為你的目標連結 -->
+                                <img src="your-image-here.jpg" alt="活動圖片" style="width: 50px; height: auto; margin-right: 10px; vertical-align: middle;">
+                                雨永恆 日光流明法 / LumenPrint / 傳統&新靛藍法 / Cyanotypeprint 工作坊
+                            </a>
+                        </h3>
+                        <p><strong>摘要內容：</strong>****************</p>
+                        <p><strong>使用範圍：</strong>IP</p>
+                        <p><strong>備註：</strong>報名需填寫個人資料，僅供學員活動使用。</p>
+                        <!-- <button class="register-btn" onclick="register()">報名</button> -->
+                    </div>
+
+                    <div class="event-item">
+                        <h3>
+                            <a href="your-link-here.html" target="_blank"> <!-- 將 "your-link-here.html" 替換為你的目標連結 -->
+                                <img src="your-image-here.jpg" alt="活動圖片" style="width: 50px; height: auto; margin-right: 10px; vertical-align: middle;">
+                                雨永恆 日光流明法 / LumenPrint / 傳統&新靛藍法 / Cyanotypeprint 工作坊
+                            </a>
+                        </h3>
+                        <p><strong>摘要內容：</strong>****************</p>
+                        <p><strong>使用範圍：</strong>IP</p>
+                        <p><strong>備註：</strong>報名需填寫個人資料，僅供學員活動使用。</p>
+                        <!-- <button class="register-btn" onclick="register()">報名</button> -->
+                    </div>
+        
+                    <div class="event-item">
+                        <h3>
+                            <a href="your-link-here.html" target="_blank"> <!-- 將 "your-link-here.html" 替換為你的目標連結 -->
+                                <img src="your-image-here.jpg" alt="活動圖片" style="width: 50px; height: auto; margin-right: 10px; vertical-align: middle;">
+                                雨永恆 日光流明法 / LumenPrint / 傳統&新靛藍法 / Cyanotypeprint 工作坊
+                            </a>
+                        </h3>
+                        <p><strong>摘要內容：</strong>****************</p>
+                        <p><strong>使用範圍：</strong>IP</p>
+                        <p><strong>備註：</strong>報名需填寫個人資料，僅供學員活動使用。</p>
+
+                        <!-- Repeat similar event items here -->
+                    </div>
+                        <!-- <button class="register-btn" onclick="register()">報名</button> -->                    
+                </div>
+            </div>
+            <!-- <div class="Eadvanced-search">
+                <a href="#">進階查詢</a>
+            </div> -->
+            <div class="pagination">
+                <!-- Page buttons will be generated by JavaScript -->
+            </div>
+        </div>
+    </header>
+
+<footer class="footer-container">
+    <p class="footer-text"> 版權所有 ©2024 , All Rights Reserved.</p>
+</footer>
+
+    
+       
+    <!-- 引入外部的 JavaScript 檔案 -->
+    <script src="E-Resources.js"></script>
+</body>
+</html>

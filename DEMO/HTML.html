@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal</title>
+    <link rel="stylesheet" href="CSS.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <!-- 使用 div 包含標題和選單，並列 -->
+            <div class="header-title-menu">
+                <h1>
+                    <a href = "HTML.html" style="text-decoration: none; color: inherit;">Portal</a>
+                </h1>
+                <ul class="drop-down-menu">
+
+                    <li><a href="關於/announcement.html">關於</a>
+                        <ul>
+                            <li><a href="關於/announcement.html">本館公告</a></li>
+                            <li><a href="#">開館時間</a></li>
+                            <li><a href="#">借還書規則</a></li>
+                            <li><a href="#">活動行事曆</a></li>
+                            <li><a href="#">聯繫我們</a></li>                        
+                        </ul>
+                    </li>
+
+                    <li><a href="#">研究資源</a>
+                        <ul>
+                            <li><a href="catalog/Catalog.html">館藏資源</a>
+                                <ul>
+                                    <li><a href="#">館藏查詢</a></li>
+                                    <li><a href="#">每月新書</a></li>
+                                    <li><a href="#">預約書排行</a></li>
+                                    <li><a href="#">多媒體資源</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="E-Resources/E-Resources.html">電子資源</a>
+                                <ul>
+                                    <li><a href="#">電子資源查詢</a></li>
+                                    <li><a href="#">電子資料庫</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="InternetResources/InternetResources.html">神學相關網路資源</a></li>
+                            <li><a href="Download/download.html">下載專區</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">OPAC</a></li>
+            
+                    <!-- 新增語言選項 -->
+                <li>
+                    <a href="#">語言</a>
+                    <ul class="language-menu">
+                        <li><a href="#">繁體中文</a></li>
+                        <li><a href="#">簡體中文</a></li>
+                        <li><a href="#">English</a></li>
+                    </ul>
+                </li>
+            </ul>
+                <form class="search-form" action="#" method="get">
+                    <input type="text" placeholder="搜尋..." name="search" required>
+                    <button type="submit">搜索</button>
+                </form>
+
+            </div>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="banner">
+            <button class="banner_prev" onclick="changeSlide(-1)">&#10094;</button>
+            <div class="banner-slides">
+                <!-- 每個 .slide 區塊都是一個 Banner，可以自由編輯 -->
+                <div class="slide">
+                    <img src="images/book1.jpg" alt="圖書館圖片 1">
+                    <div class="content">
+                        <h2>圖書館 1</h2>
+                        <p>你好。</p>
+                        <a href="#">了解更多</a>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="images/book2.jpg" alt="圖書館圖片 2">
+                    <div class="content">
+                        <h2>圖書館 2</h2>
+                        <p>Hello。</p>
+                        <a href="#">了解更多</a>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="images/book3.jpg" alt="圖書館圖片 3">
+                    <div class="content">
+                        <h2>圖書館 3</h2>
+                        <p>這是圖書館 3 的描述內容。</p>
+                        <a href="#">了解更多</a>
+                    </div>
+                </div>
+            </div>
+            <button class="banner_next" onclick="changeSlide(1)">&#10095;</button>
+        </section>
+
+<!-- 快速搜索列-->
+        <section class="search-section">
+            <div class="header-buttons">
+                <button class="tab-button" onclick="switchTab('library-search')">館藏快速查詢</button>
+                <button class="tab-button active" onclick="switchTab('resource-search')">電子資源查詢</button>
+                <button class="tab-button" onclick="switchTab('reader-info')">讀者資料查詢</button>
+            </div>
+            
+            <div class="search-container">
+                <p>可查本館圖書、電子書、期刊、視聽、學位論文等</p>
+
+                <div class="tab-content active" id="library-search">
+                    <select class="dropdown">
+                        <option>題名/刊名</option>
+                        <option>作者</option>
+                        <option>ISBN</option>
+                    </select>
+                    <select class="dropdown">
+                        <option>全部館藏</option>
+                        <option>電子資源</option>
+                        <option>期刊</option>
+                    </select>
+                    <input type="text" class="search-input" placeholder="請輸入關鍵字">
+                    <button class="search-btn">&#128269;</button>
+                </div>
+                
+                <div class="tab-content active" id="resource-search">
+                    <label for="database">資料庫</label>
+                    <select id="database" onchange="handleDatabaseChange()">
+                        <option value="">資料庫名稱</option>
+                        <option value="library">Library Catalogue</option>
+                        <option value="micromedex">Micromedex Solutions</option>
+                        <option value="pubmed">PubMed Database</option>
+                        <option value="medlineplus">MedlinePlus</option>
+                        <option value="cochrane">Cochrane</option>
+                        <option value="atoz">AtoZ</option>
+                        <!-- Add options here -->
+                    </select>
+
+                        <!-- 新的下拉式選單（默認隱藏） -->
+                    <div id="extra-dropdown-container" style="display: none;">
+                    <label for="library-options">更多選項</label>
+                    <select id="library-options">
+                        <option value="">請選擇</option>
+                        <option value="keyword">keyword</option>
+                        <option value="title">title</option>
+                        <option value="author">author</option>
+                        <option value="subject">subject</option>
+                        <option value="ISBN">ISBN</option>
+                        <option value="series">series</option>
+                        <option value="Call Number">Call Number</option>
+                    </select>
+                    </div>
+
+                    <label for="journal">電子期刊</label>
+                    <select id="journal">
+                        <option>刊名</option>
+                        <!-- Add options here -->
+                    </select>
+                    <input type="text" placeholder="輸入關鍵字">
+                    <button class="search-btn">&#128269;</button>
+                </div>
+
+                <div class="tab-content active" id="reader-info">
+                    <p>讀者資料查詢</p>
+                    <input type="text" placeholder="輸入讀者資料">
+                </div>
+            </div>
+        </section>
+
+
+        <section class="book-carousel">
+            <h2 class="carousel-title">新到館藏</h2>
+            <button class="book_carousel_prev" onclick="scrollGallery(-1)">&#10094;</button>     
+            <div class="book-gallery">
+                <div class="book">
+                    <img src="images/GreenSpan.jpeg" alt="Greenspan's Basic & Clinical Endocrinology, 10e">
+                    <p>Greenspan's Basic & Clinical Endocrinology, 10e</p>
+                </div>
+                <div class="book">
+                    <img src="images/Clinical Dermatology.jpeg" alt="Clinical Dermatology">
+                    <p>Clinical Dermatology</p>
+                </div>
+                <div class="book">
+                    <img src="images/Goodman & Gilman_s.jpeg" alt="Goodman & Gilman's: The Pharmacological Basis of Therapeutics, 13e">
+                    <p>Goodman & Gilman's: The Pharmacological Basis of Therapeutics, 13e</p>
+                </div>
+                <div class="book">
+                    <img src="images/Goodman & Gilman_s.jpeg" alt="Goodman & Gilman's: The Pharmacological Basis of Therapeutics, 12e">
+                    <p>Goodman & Gilman's: The Pharmacological Basis of Therapeutics, 12e</p>
+                </div>
+                <div class="book">
+                    <img src="images/Goodman & Gilman_s.jpeg" alt="Current Medical Diagnosis & Treatment 2018">
+                    <p>Current Medical Diagnosis & Treatment 2018</p>
+                </div>
+                <div class="book">
+                    <img src="images/Harrison_s Principles of Internal Medicine, 20e.jpeg" alt="Harrison's Principles of Internal Medicine, 20e">
+                    <p>Harrison's Principles of Internal Medicine, 20e</p>
+                </div>
+                <div class="book">
+                    <img src="images/Harrison_s Principles of Internal Medicine, 20e.jpeg" alt="Harrison's Principles of Internal Medicine, 19e">
+                    <p>Harrison's Principles of Internal Medicine, 19e</p>
+                </div>
+                <div class="book">
+                    <img src="images/Harrison_s Principles of Internal Medicine, 20e.jpeg" alt="Harrison's Principles of Internal Medicine, 19e">
+                    <p>Harrison's Principles of Internal Medicine, 19e</p>    
+                </div>
+                <div class="book">
+                    <img src="images/Harrison_s Principles of Internal Medicine, 20e.jpeg" alt="Harrison's Principles of Internal Medicine, 19e">
+                    <p>Harrison's Principles of Internal Medicine, 19e</p>
+                </div>
+            </div>
+            <button class="book_carousel_next" onclick="scrollGallery(1)">&#10095;</button>
+        </section>
+
+         <!-----------------------------------中間分欄------------------------------------>
+         <div class="container">
+            <div class="section">
+                <h3 class="section-title">新聞報導</h3>
+                <ul class="news-list">
+                    <li><a href="#">科技突破！新型電池技術或將改變未來能源市場</a></li>
+                    <li><a href="#">全球暖化惡化，科學家警告海平面上升速度超預期</a></li>
+                    <li><a href="#">地方選舉倒數，候選人全力衝刺最後一哩路</a></li>
+                    <li><a href="#">股市動盪不安，專家分析下一步投資策略</a></li>
+                    <li><a href="#">AI科技崛起：自動化工作未來對勞動力市場的影響</a></li>
+                    <li><a href="#">音樂巨星宣布明年世界巡演，台灣站引發粉絲熱潮</a></li>
+                    <li><a href="#">天災頻傳，國際社會加快應對氣候變遷行動</a></li>
+                </ul>
+            </div>
+    
+            <div class="section">
+                <h3 class="section-title">前瞻議題</h3>
+                <ul class="news-list">
+                    <li><a href="#">11/25(六)清潔及設備維護，新K館閉館一天</a></li>
+                    <li><a href="#">資料採購日，歡迎踴躍試用 (10/21更新)</a></li>
+                    <li><a href="#">2024人名有趣涯探索講座：廖文華 (夢想起家創辦人)</a></li>
+                    <li><a href="#">好樣系列主題展系列活動 11/14~12/31</a></li>
+                    <li><a href="#">書展將於寒假檔期保養 (11/21)</a></li>
+                    <li><a href="#">11/28~1/31 感恩的魔法主題書展</a></li>
+                    <li><a href="#">【OA培訓】Elsevier開放用線上工作坊</a></li>
+                    <li><a href="#">11/12~17 2024 世界愛滋日書展活動</a></li>
+                    <li><a href="#">【有獎徵文】各種科學書籍活動，歡迎參與</a></li>
+                    <li><a href="#">11/16~28 來自東西方文化：成功講座</a></li>
+                    <li><a href="#">2024學期支學獎金典藏</a></li>
+                </ul>
+                <!-- <a href="#" class="more-news-link">更多最新消息</a> -->
+            </div>
+    
+            <div class="section">
+                <h3 class="section-title">讀者專區</h3>
+                <div class="news-list">
+                    <!-- <img src="activity1.png" alt="Activity 1">
+                    <img src="activity2.png" alt="Activity 2">
+                    <img src="activity3.png" alt="Activity 3">
+                    <img src="activity4.png" alt="Activity 4">
+                    <img src="activity5.png" alt="Activity 5">
+                    <img src="activity6.png" alt="Activity 6"> -->
+                    <li><a href="#">最新文章推薦：探索我們為您精選的熱門內容，隨時掌握趨勢資訊！</a></li>
+                    <li><a href="#">加入討論：分享您的想法，與其他讀者交流見解！</a></li>
+                    <li><a href="#">訂閱電子報：每週獲取專屬的精華內容，精彩不漏看！</a></li>
+                    <li><a href="#">熱門主題：快速瀏覽當前最受關注的主題與文章。</a></li>
+                    <li><a href="#">閱讀清單：保存您喜愛的文章，方便隨時回顧。</a></li>
+                    <li><a href="#">專屬讀者活動：參加特別企劃，獲取驚喜獎勵和福利！</a></li>
+                    <li><a href="#">【OA培訓】Elsevier開放用線上工作坊</a></li>
+                    <li><a href="#">11/12~17 2024 世界愛滋日書展活動</a></li>
+                    <li><a href="#">【有獎徵文】各種科學書籍活動，歡迎參與</a></li>
+                    <li><a href="#">11/16~28 來自東西方文化：成功講座</a></li>
+                    <li><a href="#">2024學期支學獎金典藏</a></li>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="tab-container">
+            <div class="header-buttons">
+                <button class="tab-button active" onclick="switchTab('latest-news')">最新消息</button>
+                <button class="tab-button" onclick="switchTab('service-announcement')">服務公告</button>
+                <button class="tab-button" onclick="switchTab('event-info')">活動訊息</button>
+            </div>
+        
+            <div id="latest-news" class="tab-content active">
+                <ul class="news-list">
+                    <li>
+                        <span class="date">2024-11-03</span>
+                        <a href="#" class="news-link">
+                           驛風行旅—鐵道旅遊歷史文化特展 (11/6-12/8)，紀念明信片免費贈送！
+                        </a>
+                    </li>
+                    <li>
+                        <span class="date">2024-09-06</span>
+                        <a href="#" class="news-link">
+                           【看書抽好禮】E書隨行，永續生活 >> SDGs電子書展
+                        </a>
+                    </li>
+                    <li>
+                        <span class="date">2024-09-05</span>
+                        <a href="#" class="news-link">
+                            111-1圖書館利用講習帶你「研究力升級，智慧同行」開放報名！
+                        </a>
+                    </li>
+                    <li>
+                        <span class="date">2024-09-06</span>
+                        <a href="#" class="news-link">
+                           【看書抽好禮】E書隨行，永續生活 >> SDGs電子書展
+                        </a>
+                    </li>
+                    <li>
+                        <span class="date">2024-09-05</span>
+                        <a href="#" class="news-link">
+                            111-1圖書館利用講習帶你「研究力升級，智慧同行」開放報名！
+                        </a>
+                    </li>
+                    <li>
+                        <span class="date">2024-09-06</span>
+                        <a href="#" class="news-link">
+                           【看書抽好禮】E書隨行，永續生活 >> SDGs電子書展
+                        </a>
+                    </li>
+                    <li>
+                        <span class="date">2024-09-05</span>
+                        <a href="#" class="news-link">
+                            111-1圖書館利用講習帶你「研究力升級，智慧同行」開放報名！
+                        </a>
+                    </li>
+                    <li>
+                        <span class="date">2024-09-06</span>
+                        <a href="#" class="news-link">
+                           【看書抽好禮】E書隨行，永續生活 >> SDGs電子書展
+                        </a>
+                    </li>
+                    <li>
+                        <span class="date">2024-09-05</span>
+                        <a href="#" class="news-link">
+                            111-1圖書館利用講習帶你「研究力升級，智慧同行」開放報名！
+                        </a>
+                    </li>
+                    <!-- Add more news items here -->
+                </ul>
+                <a href="#" class="more-news-link">更多最新消息</a>
+            </div>
+        
+            <!-- Add other tab contents here -->
+
+            <div id="service-announcement" class="tab-content active">
+                <ul class="news-list">
+                    <li>
+                        <span class="date">2024-10-20</span>
+                        <a href="#" class="news-link">
+                            系統將於2024-10-25進行更新維護，屆時將暫停所有服務，敬請見諒。
+                        </a>
+                    </li>
+                    <li>
+                        <span class="date">2024-09-15</span>
+                        <a href="#" class="news-link">
+                            9月20日起開放圖書館新書預約服務，歡迎大家多多利用！
+                        </a>
+                    </li>
+                    <li>
+                        <span class="date">2024-08-30</span>
+                        <a href="#" class="news-link">
+                            暑期借書優惠將於8月31日結束，請儘早歸還或續借。
+                        </a>
+                    </li>
+                    <li>
+                        <span class="date">2024-07-25</span>
+                        <a href="#" class="news-link">
+                            圖書館空調設備維修通知，敬請配合。
+                        </a>
+                    </li>
+                    <li>
+                        <span class="date">2024-06-10</span>
+                        <a href="#" class="news-link">
+                            圖書館將於端午節假期暫停開放，祝大家節日快樂！
+                        </a>
+                    </li>
+                    <!-- Add more service announcements here -->
+                </ul>
+                <a href="#" class="more-news-link">更多服務公告</a>
+            </div>
+            
+        </div>
+        
+        
+        
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="logo-container">
+                <img src="images/sydt.png" alt="Library Logo" class="footer-logo">
+                <div class="library-name">
+                    Portal圖書館<br>
+                    <span class="english-name">Portal Library</span>
+                </div>
+            </div>
+            <div class="contact-info">
+                <p>地址: 235603新北市中和區建一路166號10樓 圖書館</p>
+                <p>總機: 02-29689647 02-8794-7451 | 借還書: 分機85621 | 參考諮詢: 分機25314 | 多媒體: 分機87461</p>
+                <p>信箱: Portal@sydt.com.tw</p>
+                <p>瀏覽人次: <span id="visitor-count">480948</span></p>
+            </div>
+        </div>
+    </footer>
+    
+       
+    <!-- 引入外部的 JavaScript 檔案 -->
+    <script src="JS.js"></script>
+</body>
+</html>
+ 
